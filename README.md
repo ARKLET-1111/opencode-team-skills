@@ -14,8 +14,8 @@ OpenCode は `~/.config/opencode/skills/` 配下をサブフォルダまで自�
 ## 構成
 
 ```text
-common/   全員向け
-sales/    営業向け
+common/       全員向け
+engineering/  エンジニア向け
 ```
 
 - 1スキル = 1フォルダ（`<スキル名>/SKILL.md`）
