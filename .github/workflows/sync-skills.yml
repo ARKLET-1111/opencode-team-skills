@@ -1,0 +1,29 @@
+name: Notionのスキル一覧を同期
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "**/SKILL.md"
+      - "scripts/sync-skills-to-notion.mjs"
+      - ".github/workflows/sync-skills.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: sync-skills
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # 作成者・更新回数を git log から出すため全履歴を取得
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node scripts/sync-skills-to-notion.mjs
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          NOTION_SKILLS_DATA_SOURCE_ID: ${{ vars.NOTION_SKILLS_DATA_SOURCE_ID }}
