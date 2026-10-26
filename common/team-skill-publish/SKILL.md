@@ -66,7 +66,7 @@ description: Use when the user wants to share, publish, or commit a skill to the
 ```bash
 cd ~/.config/opencode/skills/team-skills
 git diff --cached --name-only; git status --short
-grep -rInE '(ntn_|secret_|sk-|ghp_|xox[bp]-|AKIA|-----BEGIN|/Users/[^/{ ]+|[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[a-z]{2,})' <スキルフォルダ>
+grep -rInE '(ntn_|secret_|sk-|ghp_|xox[bp]-[0-9]|AKIA|-----BEGIN|/Users/[^/{ ]+|[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[a-z]{2,})' <スキルフォルダ>
 ```
 
 2. `git add <スキルフォルダ>` → `git commit`（メッセージに「何のスキルか」と「マスキングした項目数」を書く）→ `git push -u origin <ブランチ名>`
